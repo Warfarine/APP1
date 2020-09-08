@@ -1,11 +1,11 @@
 package menufact;
 
-        import ingredients.Ingredient;
-        import ingredients.TypeIngredient;
-        import menufact.iterateur.Iterateur;
-        import menufact.iterateur.ListePlatsMenu;
-        import menufact.plats.*;
-        import java.util.ArrayList;
+import menufact.iterateur.Iterateur;
+import menufact.iterateur.ListePlatsMenu;
+import menufact.plats.PlatEnfant;
+import menufact.plats.PlatRegulier;
+import menufact.plats.PlatSante;
+import menufact.plats.PlatsBuilder;
 
 public class TestMENU {
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class TestMENU {
         mainMenu.buildPlatEnfant(plat2, 1, "P2", 15, 25);
 
         PlatsBuilder plat3 = new PlatsBuilder();
-        mainMenu.buildPlatSante(plat3, 2, "P3", 20, 200, 10, 5);
+        mainMenu.buildPlatSante(plat3, 2, "P3", 20, 350, 2, 5);
 
         PlatRegulier p1 = plat1.getResultatRegulier();
         PlatEnfant p2 = plat2.getResultatEnfant();
