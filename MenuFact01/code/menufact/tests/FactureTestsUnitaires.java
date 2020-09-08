@@ -8,8 +8,13 @@ import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.TypePlats;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
+
+/**
+ * L'ensemble des tests unitaires pour les méthodes qui touches la gestion de la facture
+ * @author J. LaFerrière, É. Marchal
+ * @version 2.0
+ */
 
 public class FactureTestsUnitaires {
 

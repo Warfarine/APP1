@@ -4,6 +4,12 @@ import ingredients.Ingredient;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Interface pour gérer l'interface Builder pour les différents types de plats
+ * @author J. LaFerrière, É. Marchal
+ * @version 2.0
+ */
+
 public interface Builder {
     void setType(TypePlats type);
     void setCode(int code);

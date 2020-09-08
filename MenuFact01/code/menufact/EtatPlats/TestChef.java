@@ -1,5 +1,11 @@
 package menufact.EtatPlats;
 
+/**
+ * Classes de tests pour le comportement du chef
+ * @author J. LaFerrière, É. Marchal
+ * @version 2.0
+ */
+
 public class TestChef {
 
     public TestChef()

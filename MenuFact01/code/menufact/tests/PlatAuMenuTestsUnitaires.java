@@ -11,6 +11,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * L'ensemble des tests unitaires pour les méthodes qui touches la gestion des PlatAuMenu
+ * @author J. LaFerrière, É. Marchal
+ * @version 2.0
+ */
+
 public class PlatAuMenuTestsUnitaires {
 
     @Test()

@@ -75,6 +75,7 @@ public class Facture {
      */
     public void ajoutePlat(int code, double quantite, Menu menu) throws FactureException
     {
+        // Vérifier l'état de la facture
         if (etat == FactureEtat.OUVERTE) {
             PlatAuMenu plat = menu.getPlatSingulier(code);
             PlatChoisi pc = new PlatChoisi(plat, quantite);
@@ -113,7 +114,6 @@ public class Facture {
     }
 
     /**
-     *
      * @return le total de la facture
      */
     public double total(){
@@ -121,7 +121,6 @@ public class Facture {
     }
 
     /**
-     *
      * @return la valeur de la TPS
      */
     private double tps(){
@@ -129,7 +128,6 @@ public class Facture {
     }
 
     /**
-     *
      * @return la valeur de la TVQ
      */
     private  double tvq(){
@@ -137,6 +135,7 @@ public class Facture {
     }
 
     public void payer() throws FactureException {
+        // Vérifier l'état de la facture
         if (etat == FactureEtat.OUVERTE)
         {
             throw new FactureException("La facture doit etre a l'etat fermee");
@@ -158,6 +157,7 @@ public class Facture {
      */
     public void ouvrir() throws FactureException
     {
+        // Vérifier l'état de la facture
         if (etat == FactureEtat.PAYEE)
             throw new FactureException("La facture ne peut pas être reouverte.");
         else
@@ -165,7 +165,6 @@ public class Facture {
     }
 
     /**
-     *
      * @return le contenu de la facture en chaîne de caracteres
      */
     @Override
@@ -186,6 +185,7 @@ public class Facture {
      */
     public void afficherFacture() {
 
+        // État ouverte
         if (etat == FactureEtat.OUVERTE)
         {
             for (int i = 0; i < platchoisi.size(); i++) {
@@ -193,18 +193,20 @@ public class Facture {
             }
         }
 
+        // État fermée
         else if (etat == FactureEtat.FERMEE) {
             for (int i = 0; i < platchoisi.size(); i++) {
                 System.out.println(platchoisi.get(i).toString());
             }
         }
+        // État payée
         System.out.println("Sous-totale : " + sousTotal() + " $" +
                            ", Total: " + total() + " $" +
                            "\nEtat Facture: " + etat);
     }
 
     /**
-     *
+     * Méthode pour générer et imprimer une facture
      * @return une chaîne de caractères avec la facture à imprimer
      */
     public String genererFacture()

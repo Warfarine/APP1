@@ -5,7 +5,7 @@ import ingredients.Ingredient;
 import ingredients.SingletonInventaire;
 import ingredients.TypeIngredient;
 import ingredients.exceptions.IngredientException;
-import menufact.EtatPlats.Chef;
+import menufact.EtatPlats.*;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
 import menufact.facture.exceptions.FactureException;
@@ -182,24 +182,32 @@ public class TestMenuFact02 {
         //////////////////////////////////////////// CREATION DE LA FACTURE /////////////////////////////////////////////
         // Selection des plats et ajout a la facture - p1 = plat regulier, p2 = plat enfant, p3 = plat sante
         PlatChoisi pc1 = new PlatChoisi(p1, 2, inventaire);
+        Chef ch1 = new Chef();
         PlatChoisi pc2 = new PlatChoisi(p2, 30, inventaire);
+        Chef ch2 = new Chef();
         PlatChoisi pc3 = new PlatChoisi(p3, 1, inventaire);
+        Chef ch3 = new Chef();
 
         // Verifier si les plats sont valides et si ils peuvent etre faits dans la quantite demandee
         // Essais si les ingredients ne sont pas suffisants
         try {
             t.test5_TestChoixPlats(trace, pc2);
-        } catch (IngredientException | MenuException e) {
+                } catch (IngredientException | MenuException e) {
             System.out.println(e);
         }
-
+        ch2.setEtat(new ImpossibleDeServir());
+        ch2.action();
         // Verification valide
         try {
             t.test5_TestChoixPlats(trace, pc1);
             t.test5_TestChoixPlats(trace, pc3);
+            ch1.setEtat(new Commande());
+            ch3.setEtat(new Commande());
         } catch (IngredientException | MenuException e) {
             System.out.println(e);
         }
+        ch1.action();
+        ch3.action();
 
         // Montrer l'etat de l'inventaire
         t.test1_AffichageInventaire(trace,inventaire);
@@ -246,8 +254,19 @@ public class TestMenuFact02 {
         System.out.println("\n" + facture.genererFacture());
 
         //////////////////////////////////////////// TESTS AVEC LE CHEF ////////////////////////////////////////////////
-    }
+        ch1.setEtat(new Preparation());
+        ch2.setEtat(new Preparation());
+        ch1.action();
+        ch2.action();
 
+        ch1.setEtat(new Termine());
+        ch2.setEtat(new Termine());
+        ch1.action();
+        ch2.action();
+
+        //////////////////////////////////////////// FIN TEST /////////////////////////////////////////////////////////
+        System.out.println("\n" + "=== FIN DES TESTS ===" + "\n");
+    }
     private void test1_AffichageInventaire(boolean trace, SingletonInventaire inventaire) {
         System.out.println("=== Test 1: Affichage Inventaire ===" + "\n");
         if (trace)
