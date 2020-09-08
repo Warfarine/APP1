@@ -15,6 +15,10 @@ public class PlatChoisi {
     private boolean estOK;
     private SingletonInventaire inventaire;
 
+    public PlatChoisi(PlatAuMenu plat, double quantitePlat) {
+        this.plat = plat;
+        this.quantitePlat = quantitePlat;
+    }
     public PlatChoisi(PlatAuMenu plat, double quantitePlat, SingletonInventaire inventaire) {
         this.plat = plat;
         this.quantitePlat = quantitePlat;
@@ -43,7 +47,8 @@ public class PlatChoisi {
     @Override
     public String toString() {
         return "PlatChoisi : " +
-                "Plat : " + plat.getDescription() +
+                "Code plat: " + plat.getCode() +
+                "; Prix : " + plat.getPrix() +
                 "; Quantite : " + quantitePlat + "; ";
     }
 

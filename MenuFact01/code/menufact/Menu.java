@@ -42,7 +42,8 @@ public class Menu {
 
     // Méthodes d'access et de modification
     ArrayList<PlatAuMenu> getPlats() { return plats; }
-    String getPlatInfo(int code) {
+    public PlatAuMenu getPlatSingulier(int code) {return plats.get(code); }
+    public String getPlatInfo(int code) {
         if (code < 0 | code > plats.size()) {
             throw new ArrayIndexOutOfBoundsException("Le code entre est invalide");
         }

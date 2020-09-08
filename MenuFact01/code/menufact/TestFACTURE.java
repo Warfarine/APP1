@@ -41,7 +41,12 @@ public class TestFACTURE {
 
         // creation Plats
         PlatAuMenu p1 = new PlatAuMenu(TypePlats.REGULIER, 0, "P1", 20);
-        PlatAuMenu p2 = new PlatAuMenu(TypePlats.REGULIER, 2, "P3", 15);
+        PlatAuMenu p2 = new PlatAuMenu(TypePlats.REGULIER, 1, "P3", 15);
+        PlatAuMenu p3 = new PlatAuMenu(TypePlats.REGULIER, 2, "P5", 35);
+
+        // creation menu
+        Menu menu = new Menu("Osti");
+        menu.ajoute(p1); menu.ajoute(p2); menu.ajoute(p3);
 
         try {
             p1.setListIngredients("pomme", "red", 1, TypeIngredient.FRUIT, EtatIngredient.UNITES, inventaire);
@@ -50,17 +55,21 @@ public class TestFACTURE {
 
             p2.setListIngredients("beef", "joocy", 50, TypeIngredient.VIANDE, EtatIngredient.grammes, inventaire);
             p2.setListIngredients("cheese", "old", 240, TypeIngredient.LAITIER, EtatIngredient.grammes, inventaire);
+
+            p3.setListIngredients("milk", "cows", 50, TypeIngredient.LAITIER, EtatIngredient.millilitre, inventaire);
         } catch (IngredientException e) {
             System.out.println(e);
         }
 
         PlatChoisi pc1 = new PlatChoisi(p1, 2, inventaire);
         PlatChoisi pc2 = new PlatChoisi(p2, 1, inventaire);
+        PlatChoisi pc3 = new PlatChoisi(p3, 4, inventaire);
 
         // ajout ingredients au plats
         try {
             pc1.confirmerPlat();
             pc2.confirmerPlat();
+            pc3.confirmerPlat();
         } catch (IngredientException | MenuException e) {
             System.out.println(e);
         }
@@ -71,8 +80,9 @@ public class TestFACTURE {
         // Creation facture
         Facture facture = new Facture("Ma Facture");
         try {
-            facture.ajoutePlat(pc1);
-            facture.ajoutePlat(pc2);
+            facture.ajoutePlat(0, 1, menu);
+            facture.ajoutePlat(1, 2, menu);
+            facture.ajoutePlat(2, 4, menu);
         } catch (FactureException e) {
             System.out.println(e);
         }
@@ -81,7 +91,30 @@ public class TestFACTURE {
         ListePlatsFacture listFacture = new ListePlatsFacture(facture.getPlats());
         IterateurF itr = listFacture.creerIterateurFacture();
 
+        System.out.println(itr.itemCourant());
+        System.out.println(itr.suivant());
+        itr.itemCourant().setQuantite(3);
+
+        facture.retirerPlat(itr.itemCourant());
+
         facture.afficherFacture();
 
+        /*try {
+            facture.payer();
+        } catch (FactureException e)
+        {
+            System.out.println(e);
+        }*/
+
+        facture.fermer();
+
+        try {
+            facture.payer();
+        } catch (FactureException e)
+        {
+            System.out.println(e);
+        }
+        //facture.afficherFacture();
+        //System.out.println(facture.genererFacture());
     }
 }
