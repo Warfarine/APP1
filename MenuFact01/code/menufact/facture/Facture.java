@@ -37,6 +37,20 @@ public class Facture {
     }
 
     /**
+     * Méthode pour accéder la description de la facture
+     * @return la description de la facture
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Méthode pour accéder les information du client de la facture
+     * @return le client associe a la facture
+     */
+    public Client getClient() { return client; }
+
+    /**
      * Méthode pour accéder l'état de la facture
      * @return l'état courant de la facture
      */
@@ -181,12 +195,12 @@ public class Facture {
 
         else if (etat == FactureEtat.FERMEE) {
             for (int i = 0; i < platchoisi.size(); i++) {
-                System.out.println(platchoisi.get(i).toString() +
-                        " Sous-totale : " + sousTotal() + " $" +
-                        ", Total: " + total() + " $");
+                System.out.println(platchoisi.get(i).toString());
             }
         }
-        System.out.println("Etat Facture: " + etat);
+        System.out.println("Sous-totale : " + sousTotal() + " $" +
+                           ", Total: " + total() + " $" +
+                           "\nEtat Facture: " + etat);
     }
 
     /**

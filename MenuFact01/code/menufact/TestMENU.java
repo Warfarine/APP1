@@ -9,6 +9,7 @@ import menufact.plats.PlatsBuilder;
 
 public class TestMENU {
     public static void main(String[] args) {
+
         // Creation Menu
         Menu mainMenu = new Menu("Test menu");
 

@@ -13,6 +13,7 @@ public class MenuTestsUnitaires {
     public void Menu() {
         Menu mainMenu = new Menu("Menu Principale");
         assertEquals("Menu Principale", mainMenu.getDescription());
+        assertTrue(mainMenu.getPlats().isEmpty());
     }
 
     @Test
@@ -67,7 +68,7 @@ public class MenuTestsUnitaires {
         assertEquals(TypePlats.SANTE, p3.getType());
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test()
     public void getPlatSingulier() {
         // Creation menu
         Menu mainMenu = new Menu("Menu Principale");
@@ -85,7 +86,11 @@ public class MenuTestsUnitaires {
         mainMenu.ajoute(p1); mainMenu.ajoute(p2);
 
         assertEquals(p2, mainMenu.getPlatSingulier(1));
-        mainMenu.getPlatSingulier(5);
+
+        try {
+            mainMenu.getPlatSingulier(5);
+            fail("Le code entre est invalide");
+        } catch (IndexOutOfBoundsException e) {}
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)

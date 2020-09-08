@@ -23,6 +23,10 @@ public final class SingletonInventaire {
         }
     }
 
+    public void ajoutIngredient(Ingredient ingredient) {
+        contenu.add(ingredient);
+    }
+
     public int estDansInventaire(String nomIngredient, EtatIngredient etat) {
         for (int i = 0; i < contenu.size(); i++) {
             if ((contenu.get(i).getNom()).equals(nomIngredient) && contenu.get(i).getEtatIngredient().equals(etat)) {

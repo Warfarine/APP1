@@ -18,6 +18,6 @@ public class PlatEnfant extends PlatAuMenu{
     @Override
     public String toString() {
         return super.toString() +
-                "; Proportion: " + proportion;
+                "; Proportion: " + proportion + "\n";
     }
 }

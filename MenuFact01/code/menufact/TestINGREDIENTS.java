@@ -23,13 +23,6 @@ public class TestINGREDIENTS {
         Ingredient i8 = new Ingredient("piggy", "oink", 600, TypeIngredient.VIANDE, EtatIngredient.grammes);
         Ingredient i9 = new Ingredient("pepper", "black", 30, TypeIngredient.EPICE, EtatIngredient.millilitre);
 
-        // test setting negative number - OK
-        /*try {
-            i1.setQuantite(-2);
-        }catch (IngredientException e) {
-            System.out.println(e);
-        }*/
-
         inventaire.contenu.add(i1);
         inventaire.contenu.add(i3);
         inventaire.contenu.add(i4);
@@ -38,27 +31,6 @@ public class TestINGREDIENTS {
         inventaire.contenu.add(i7);
         inventaire.contenu.add(i9);
 
-        // affichage inventaire - OK
-
-        // modifier inventaire - ajouter
-        /*try {
-            inventaire.ajoutQnt("cheese", 200);
-            //inventaire.ajoutQnt("poisson", 20);
-        }catch (IngredientException e) {
-            System.out.println(e);
-        }*/
-
-        // modifier inventaire - retirer
-        /*try {
-            inventaire.retirerQnt("cheese", 100);
-            inventaire.retirerQnt("carotte", 15);
-            inventaire.retirerQnt("beef", 1000);
-        }catch (IngredientException e) {
-            System.out.println(e);
-        }*/
-
-        // Reafficher inventaire
-        //System.out.println(inventaire.contenu);
 
         // creation Plats
         PlatAuMenu p1 = new PlatAuMenu(TypePlats.REGULIER, 0, "P1", 20);

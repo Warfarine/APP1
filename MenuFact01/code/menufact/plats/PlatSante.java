@@ -21,7 +21,7 @@ public class PlatSante extends PlatAuMenu {
         return super.toString() +
                 "; kcal: " + kcal +
                 "; chol: " + chol +
-                "; gras: " + gras;
+                "; gras: " + gras + "\n";
     }
 
     public double getKcal() {

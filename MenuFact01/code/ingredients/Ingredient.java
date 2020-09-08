@@ -28,6 +28,12 @@ public class Ingredient {
         this.description = description;
     }
 
+    public TypeIngredient getTypeIngredient() { return typeIngredient; }
+    public void setTypeIngredient(TypeIngredient type) { this.typeIngredient = type; }
+
+    public EtatIngredient getEtatIngredient() { return etatIngredient; }
+    public void setEtatIngredient(EtatIngredient etat)  { this.etatIngredient = etat; }
+
     public double getQuantite() {
         return quantite;
     }
@@ -37,24 +43,6 @@ public class Ingredient {
         }
         else {
             this.quantite = qnt;
-        }
-    }
-
-    public TypeIngredient getTypeIngredient() { return typeIngredient; }
-    public void setTypeIngredient(TypeIngredient type) throws IngredientException {
-        if (!typeIngredient.equals(type)) {
-            throw new IngredientException("Type incompatible d'ingredients");
-        } else {
-            this.typeIngredient = type;
-        }
-    }
-
-    public EtatIngredient getEtatIngredient() { return etatIngredient; }
-    public void setEtatIngredient(EtatIngredient etat) throws IngredientException {
-        if (!typeIngredient.equals(etat)) {
-            throw new IngredientException("Type incompatible d'ingredients");
-        } else {
-            this.etatIngredient = etat;
         }
     }
 
